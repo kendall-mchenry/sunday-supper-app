@@ -1,0 +1,86 @@
+<p style="color: green"><%= notice %></p>
+
+<section>
+  <%#= render @event %>
+
+  <h2><%= @event.event_date.strftime("%m/%d/%y") %> Sunday Supper</h2>
+  <p>
+    <strong>We’re excited to have you join us at our Sunday Supper! Below you will find some helpful details. Feel free to let either of us know if you have any questions. 🍽️✨</strong>
+  </p>
+
+  <div>
+    <p>Hosts:</p>
+    <ul>
+      <% @event.host_info.each do |host| %>
+        <li><%= host[:name] %>: <%= host[:phone] %></li>
+      <% end %>
+    </ul>
+  </div>
+
+  <div>
+    <!--  TODO: Update with map link/information -->
+    <p>Address:</p>
+    <% @event.host_address.split(", ", 2).each do |line| %>
+    <address><%= line %></address>
+    <% end %>
+  </div>
+
+  <div>
+    <p>Time: <%= @event.event_time.strftime("%l:%M %p") %></p>
+  </div>
+
+  <div>
+    <p>Parking:</p>
+    <ul>
+      <li>Parking is limited and pretty tight right at our house, so we recommend carpooling when possible. There will be maybe two spots in front of our house on the street. No one is currently living at the duplex just past us, so if there are spots in front of that house, feel free to grab them.</li>
+      <li>Otherwise, you can park at the church lot at 341 9th Ave N, Franklin, TN 37064 and walk to our house (about 2 minutes).</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <p>Food: <%= @event.food_category %></p>
+  <table>
+    <thead>
+    **Add info about all different food items here & make interactive**
+    <tr>
+      <th>Item</th>
+      <th>Who's bringing it</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td><%= @event.meal_item %></td>
+      <td>**who**</td>
+    </tr>
+    </tbody>
+  </table>
+</section>
+
+<section>
+  <p>Other Notes:</p>
+  <ul>
+    <li>Let us know if you have any dietary restrictions (Brooke is gluten free)</li>
+    <li>Heads up that we have a super friendly dog (Koda, see below)</li>
+  </ul>
+  <%= image_tag("ss_koda.jpeg", width: "20%") %>
+</section>
+
+<section>
+  <p>Attendees:</p>
+  <ul>
+    <li>Add attendees here -- loop through</li>
+  </ul>
+</section>
+
+<br>
+
+<section>
+  <div>
+    <%= link_to "Edit this event", edit_event_path(@event) %> |
+    <%= link_to "Back to events", events_path %>
+
+    <%= button_to "Destroy this event", @event, method: :delete %>
+  </div>
+</section>
+
