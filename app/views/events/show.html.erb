@@ -48,12 +48,15 @@
       <th>Who's bringing it</th>
     </tr>
     </thead>
-    <tbody>
-    <tr>
-      <td><%= @event.meal_item %></td>
-      <td>**who**</td>
-    </tr>
-    </tbody>
+      <tbody>
+      <%#= render @event.meal_items %>
+      <% @event.meal_items.each do |item| %>
+            <tr>
+              <td><%= item.meal_item %></td>
+              <td>**who**</td>
+            </tr>
+      <% end %>
+      </tbody>
   </table>
 </section>
 
@@ -62,6 +65,7 @@
   <ul>
     <li>Let us know if you have any dietary restrictions (Brooke is gluten free)</li>
     <li>Heads up that we have a super friendly dog (Koda, see below)</li>
+    <li>Notes from the form: <%= @event.notes %></li>
   </ul>
   <%= image_tag("ss_koda.jpeg", width: "20%") %>
 </section>
