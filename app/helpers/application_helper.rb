@@ -56,7 +56,7 @@ end
 #     # This info can be named anything we want, but in this case we chose `data-id:` and `data-fields:`.
 #     # The `id:` is from `new_object.object_id`.
 #     # The `fields:` are rendered from the `fields` blocks.
-#     # We use `gsub("\n", "")` to remove anywhite space from the rendered partial.
+#     # We use `gsub("\n", "")` to remove any white space from the rendered partial.
 #     # The `id:` value needs to match the value used in `child_index: id`.
 #     link_to(
 #       name,

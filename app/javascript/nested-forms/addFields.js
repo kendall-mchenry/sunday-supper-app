@@ -28,4 +28,4 @@ class addFields {
     }
 }
 
-window.addEventListener("turbolinks:load", () => new addFields());
+window.addEventListener("turbo:load", () => new addFields());

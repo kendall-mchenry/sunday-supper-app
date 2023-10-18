@@ -4,6 +4,23 @@
 
 <br>
 
+<%#= simple_form_for @event do |f| %>
+  <%#= f.input :food_category %>
+<!--    <div id="fieldsetContainer">-->
+<!--      <fieldset id="0">-->
+        <%#= f.simple_fields_for :meal_items do |i| %>
+          <%#= i.input :meal_item %>
+        <%# end %>
+<!--        <button id="addMealItem">Add Meal Item</button>-->
+<!--      </fieldset>-->
+<!--    </div>-->
+  <%#= f.button :submit %>
+<%# end %>
+
 <div>
   <%= link_to "Back to events", events_path %>
 </div>
+
+<!--<div>-->
+<!--  <button id="test-button" type="button">Click Me!</button>-->
+<!--</div>-->

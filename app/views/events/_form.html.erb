@@ -49,6 +49,19 @@
     <%#= form.number_field :attendee_total %>
 <!--  </div>-->
 
+<!--  <hr>-->
+
+  <%#= form.fields_for :meal_items do |ff| %>
+    <%#= tag.div class: "flex gap-2" do %>
+      <%#= ff.select :meal_item, MealItem.all.map { |i| [i.meal_item, i.id] }, include_blank: "Add Meal Item" %>
+      <%#= ff.text_field :meal_item, placeholder: "Add Item" %>
+      <%#= ff.check_box :_destroy, title: "Check to delete item" %>
+    <%# end %>
+  <%# end %>
+  <%#= form.submit "Add Item", name: :add_item %>
+
+<!--  <hr>-->
+
   <div>
     <%= form.label :notes, style: "display: block" %>
     <%= form.text_area :notes %>
@@ -58,3 +71,5 @@
     <%= form.submit %>
   </div>
 <% end %>
+
+

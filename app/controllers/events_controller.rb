@@ -28,12 +28,16 @@ class EventsController < ApplicationController
     @event = Event.new(event_params)
 
     respond_to do |format|
-      if @event.save
-        format.html { redirect_to event_url(@event), notice: "Event was successfully created." }
-        format.json { render :show, status: :created, location: @event }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @event.errors, status: :unprocessable_entity }
+      # if params[:add_item]
+      #   @event.meal_items.build
+      # else
+        if @event.save
+          format.html { redirect_to event_url(@event), notice: "Event was successfully created." }
+          format.json { render :show, status: :created, location: @event }
+        else
+          format.html { render :new, status: :unprocessable_entity }
+          format.json { render json: @event.errors, status: :unprocessable_entity }
+        # end
       end
     end
   end

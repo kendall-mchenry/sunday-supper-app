@@ -26,4 +26,4 @@ class removeFields {
     }
 }
 
-window.addEventListener("turbolinks:load", () => new removeFields());
+window.addEventListener("turbo:load", () => new removeFields());
