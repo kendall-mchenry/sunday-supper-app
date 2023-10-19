@@ -13,6 +13,10 @@ class EventsController < ApplicationController
   # GET /events/new
   def new
     @event = Event.new
+
+    # TODO: is there a way to calculate this times automatically? OR just add via JS in the form?
+    # 2.times { @event.meal_items.build }
+    @event.meal_items.build
   end
 
   # GET /events/1/edit
@@ -24,12 +28,16 @@ class EventsController < ApplicationController
     @event = Event.new(event_params)
 
     respond_to do |format|
-      if @event.save
-        format.html { redirect_to event_url(@event), notice: "Event was successfully created." }
-        format.json { render :show, status: :created, location: @event }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @event.errors, status: :unprocessable_entity }
+      # if params[:add_item]
+      #   @event.meal_items.build
+      # else
+        if @event.save
+          format.html { redirect_to event_url(@event), notice: "Event was successfully created." }
+          format.json { render :show, status: :created, location: @event }
+        else
+          format.html { render :new, status: :unprocessable_entity }
+          format.json { render json: @event.errors, status: :unprocessable_entity }
+        # end
       end
     end
   end
@@ -65,6 +73,6 @@ class EventsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def event_params
-      params.require(:event).permit(:event_date, :event_time, :food_category, :meal_item, :attendee_total, :notes)
+      params.require(:event).permit(:event_date, :event_time, :food_category, :attendee_total, :notes, meal_items_attributes: [:id, :meal_item, :_destroy])
     end
 end

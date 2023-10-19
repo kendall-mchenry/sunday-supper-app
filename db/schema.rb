@@ -10,16 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_05_152018) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_13_155149) do
   create_table "events", force: :cascade do |t|
     t.date "event_date"
     t.time "event_time"
     t.string "food_category"
-    t.string "meal_item"
     t.integer "attendee_total"
     t.text "notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+  create_table "meal_items", force: :cascade do |t|
+    t.string "meal_item"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "event_id", null: false
+    t.index ["event_id"], name: "index_meal_items_on_event_id"
+  end
+
+  add_foreign_key "meal_items", "events"
 end
