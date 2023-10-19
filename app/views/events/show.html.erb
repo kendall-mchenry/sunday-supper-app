@@ -44,14 +44,15 @@
     <thead>
     **Add info about all different food items here & make interactive**
     <tr>
+      <th></th>
       <th>Item</th>
       <th>Who's bringing it</th>
     </tr>
     </thead>
       <tbody>
-      <%#= render @event.meal_items %>
       <% @event.meal_items.each do |item| %>
             <tr>
+              <td><%= button_to "Remove", '#', class: "remove_fields" %></td>
               <td><%= item.meal_item %></td>
               <td>**who**</td>
             </tr>
